@@ -20,3 +20,4 @@
 - in the future, maybe
   - type in activities information on desk web
   - grab personal calendar information from emails and recommend trips fit into their schedules
+  - report invalid activities
