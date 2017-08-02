@@ -1,6 +1,24 @@
 version: "3"
-services: 
-  db-postgres: 
+services:
+  api:
+    build: ./api
+    working_dir: /api/
+    links:
+      - db-postgres
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api:/api
+  db-postgres:
     image: postgres:9.6
-    ports: 
+    ports:
       - "5432:5432"
+    volumes:
+      - /lib/postgresql
+    environment:
+      POSTGRES_PASSWORD: shejingbing
+      POSTGRES_USER: nvwangdaren
+  adminer:
+        image: adminer
+        ports:
+            - 8080:8080
