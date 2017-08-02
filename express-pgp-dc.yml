@@ -1,5 +1,14 @@
 version: "3"
 services:
+  fun-api:
+    build: ./express+pgp
+    working_dir: /api
+    links:
+      - db-postgres
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./express+pgp:/api
   db-postgres:
     image: postgres:9.6
     ports:
@@ -10,4 +19,7 @@ services:
       POSTGRES_PASSWORD: shejingbing
       POSTGRES_USER: nvwangdaren
       POSTGRES_DB: ocwahaha
-      
+  adminer:
+        image: adminer
+        ports:
+            - 8080:8080
