@@ -5,7 +5,7 @@
 - Dev platform: Docker
 
 ## Milestones
-- v0.0.0 a brand new repo <-------- current version
+- v0.0.0 a brand new repo 
 - v0.5.0
   - post outdoor activities manually through mobile app
   - view outdoor activities without any choices

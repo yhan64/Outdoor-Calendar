@@ -10,4 +10,7 @@ services:
       POSTGRES_PASSWORD: shejingbing
       POSTGRES_USER: nvwangdaren
       POSTGRES_DB: ocwahaha
-      
+  adminer:
+        image: adminer
+        ports:
+            - 8080:8080
