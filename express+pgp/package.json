@@ -4,12 +4,19 @@
   "description": "",
   "main": "helloworld.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel --presets es2015 src -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build && node dist/helloworld-2.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.3",
+    "knex": "^0.13.0",
     "pg-promise": "^6.3.6"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1"
   }
 }

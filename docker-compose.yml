@@ -1,5 +1,18 @@
 version: "3"
 services:
+  api:
+    image: node:8
+    command: npm run dev
+    volumes:
+      - ./api:/api/
+    working_dir: /api/
+    links:
+      - db-postgres
+    ports:
+      - "3030:3030"
+    environment:
+      POSTGRES_HOST: db-postgres
+      API_PORT: 3030
   db-postgres:
     image: postgres:9.6
     ports:
@@ -10,4 +23,7 @@ services:
       POSTGRES_PASSWORD: shejingbing
       POSTGRES_USER: nvwangdaren
       POSTGRES_DB: ocwahaha
-      
+  adminer:
+        image: adminer
+        ports:
+            - 8080:8080

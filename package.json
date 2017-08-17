@@ -1,0 +1,28 @@
+{
+  "name": "outdoor-calendar",
+  "version": "0.0.0",
+  "description": "Post, view outdoor activities...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://yhan64@github.com/yhan64/Outdoor-Calendar.git"
+  },
+  "keywords": [
+    "outdoor",
+    "calendar",
+    "hiking",
+    "trecking",
+    "mountaineering",
+    "backpacking",
+    "roadtrip"
+  ],
+  "author": "yhan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yhan64/Outdoor-Calendar/issues"
+  },
+  "homepage": "https://github.com/yhan64/Outdoor-Calendar#readme"
+}

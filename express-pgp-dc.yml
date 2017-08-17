@@ -2,13 +2,17 @@ version: "3"
 services:
   fun-api:
     build: ./express+pgp
-    working_dir: /api
+    # we can set it both here and in dockerfile
+    # working_dir: /api
     links:
       - db-postgres
     ports:
       - "3000:3000"
-    volumes:
-      - ./express+pgp:/api
+    # volumes will dump all the files into /api, 
+    # includign node_modules, 
+    # so use Dockerfile to take only the needed files to workdir
+    # volumes: 
+    #   - ./express+pgp:/api
   db-postgres:
     image: postgres:9.6
     ports:
