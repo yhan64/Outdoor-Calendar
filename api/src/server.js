@@ -37,6 +37,10 @@ app.get(routes.getActivities, async function(req, res) {
   res.send('Hello world');
 })
 
+app.get('/', async function(req, res) {
+  res.send('Hello world');
+})
+
 app.listen(process.env.API_PORT, function () {
   console.log('Example app listening on port', process.env.API_PORT)
 })
