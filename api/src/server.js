@@ -1,42 +1,42 @@
-// import knex from 'knex';
+import db from './db';
+import express from 'express';
+import bodyParser from 'body-parser';
 
-// const db = knex({
-//   client: 'pg',
-//   version: '7.0',
-//   connection: {
-//     host : '127.0.0.1',
-//     user : 'nvwangdaren',
-//     password : 'shejingbing',
-//     database : 'ocwahaha'
-//   }
-// });
+const app = express()
+  .use(bodyParser.json());
 
+const routes = {
+  postActivity: '/post',
+  getActivities: '/getAll'
+}
 
-// db.schema.createTable('activities', (t) => {
-//   t.uuid('id').primary().defaultTo(knex.raw('uudi_generate_v4'));
-//   t.timestamp('create_at').defaultTo(knex.raw('now()'));
-// })
+app.post(routes.postActivity, async function (req, res) {
+  // res.send('Hello World!')
+  // {duration: 5, start_date: '2017-9-10', end_date: '2017-9-15'}
+  console.log('--------------> req.body -------------->')
+  console.log(req.body);
+  let ans = 'init';
+  // db('activities').insert(req.body)
+  // .then()
+  // .then(ans = 'succeeded')  //the two assignment would work, so the fianl value of ans is always failed
+  // .catch(ans = 'failed');
+  await db('activities').insert(req.body)
+  .then()
+  .then(function (data) {
+    ans = 'succeeded';
+  })
+  .catch(function (data) {
+    ans = 'failed';
+  });
+  res
+  .status(200)
+  .send(ans)
+})
 
-// console.log('after db schema');
+app.get(routes.getActivities, async function(req, res) {
+  res.send('Hello world');
+})
 
-
-// var knex = require('knex')({
-//   client: 'pg',
-//   version: '7.0',
-//   connection: {
-//     host : '127.0.0.1',
-//     user : 'nvwangdaren',
-//     password : 'shejingbing',
-//     database : 'ocwahaha'
-//   }
-// });
-
-// knex.schema.createTable('activities', (t) => {
-//   t.uuid('id').primary().defaultTo(knex.raw('uudi_generate_v4'));
-//   t.timestamp('create_at').defaultTo(knex.raw('now()'));
-// })
-
-// knex.raw('select 1+1 as result').then(function () {
-//   // there is a valid connection in the pool
-//   console.log('------> valid connection')
-// });
+app.listen(process.env.API_PORT, function () {
+  console.log('Example app listening on port', process.env.API_PORT)
+})
