@@ -18,6 +18,7 @@
 - v2.0.0
   - grab outdoor activities
 - in the future, maybe
-  - type in activities information on desk web
+  - personal calendar (activities that are saved)
+  - enter activities information on desk web
   - grab personal calendar information from emails and recommend trips fit into their schedules
   - report invalid activities
