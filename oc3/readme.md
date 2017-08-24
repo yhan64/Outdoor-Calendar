@@ -1,0 +1,1 @@
+a simple setup of React Native + Redux
