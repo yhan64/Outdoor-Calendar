@@ -1,18 +1,18 @@
 import React from 'react';
-import { View, Text } from 'react-native'
+import { View, Text, AppRegistry } from 'react-native'
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import apiReducer from './reducers/apiReducer';
 
-import Example from './example';
+import NavigationWrapper from './NavigationWrapper';
 
 const store = createStore(apiReducer);
 
 export default () => {
     return (
         <Provider store={store}>
-            <Example />
+            <NavigationWrapper />
         </Provider>
     )
 }
