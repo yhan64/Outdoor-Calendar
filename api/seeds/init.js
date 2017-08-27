@@ -1,8 +1,5 @@
 import moment from 'moment';
 
-const activities = {
-  
-}
 exports.seed = async function(knex) {
   for (let i = -5; i < 10; ++i) {
     const act = {
@@ -11,7 +8,7 @@ exports.seed = async function(knex) {
       end_date: moment(new Date()).add(i + 5, 'days'),
       type: 'hiking'
     }
-    await knex('activities').insert(act).then();
+    await knex('events').insert(act).then();
   }
   return Promise.resolve();
 };

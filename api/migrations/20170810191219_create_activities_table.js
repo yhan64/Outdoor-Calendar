@@ -3,7 +3,7 @@ import knext from 'knex'
 export async function up(knex) {
     await knex.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
 
-    await knex.schema.createTable('activities', (t) => {
+    await knex.schema.createTable('events', (t) => {
         t.uuid('id').primary().defaultTo(knex.raw('uuid_generate_v4()'));
         t.timestamp('created_at').defaultTo(knex.raw('now()'));
         t.date('start_date');
@@ -13,12 +13,14 @@ export async function up(knex) {
         t.string('dismiss_at');
         t.string('destination');
         t.string('type');
+        t.string('description');
+        t.string('hoster_note');
     })
 
     return Promise.resolve();
 }
 
 export async function down(knex) {
-    await knex.schema.dropTable('activities');
+    await knex.schema.dropTable('events');
     return Promise.resolve();
 }
