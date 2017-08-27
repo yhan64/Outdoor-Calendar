@@ -7,7 +7,7 @@ const app = express()
 
 const routes = {
   postActivity: '/post',
-  getActivities: '/getAll'
+  getActivities: '/getActivities'
 }
 
 app.post(routes.postActivity, async function (req, res) {
@@ -34,7 +34,8 @@ app.post(routes.postActivity, async function (req, res) {
 })
 
 app.get(routes.getActivities, async function(req, res) {
-  res.send('Hello world');
+  const activities = await db.select().table('activities').then();
+  res.send(activities);
 })
 
 app.get('/', async function(req, res) {

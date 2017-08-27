@@ -1,13 +1,17 @@
+import moment from 'moment';
 
-exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
+const activities = {
+  
+}
+exports.seed = async function(knex) {
+  for (let i = -5; i < 10; ++i) {
+    const act = {
+      duration: 5,
+      start_date: moment(new Date()).add(i, 'days'),
+      end_date: moment(new Date()).add(i + 5, 'days'),
+      type: 'hiking'
+    }
+    await knex('activities').insert(act).then();
+  }
+  return Promise.resolve();
 };
