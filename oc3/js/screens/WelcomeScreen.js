@@ -1,27 +1,17 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Text } from 'react-native';
 
-import { fetchAllEvents, eventsFetchedAction, testActionCreator } from '../actions/apiActions';
-
-import * as actionCreator from '../actions/apiActions';
-
-const foo = dispatch => {
-  return () => dispatch(eventsFetchedAction('events'))
+import { fetchAllEvents, eventsFetchedAction } from '../actions/apiActions';
+const apiActions = {
+  fetchAllEvents
 }
-const foo2 = dispatch => {
-  return {
-    eventsFetchedAction,
-    fetchAllEvents: fetchAllEvents()
-  }
-}
+
+const mapDispatchToProps = dispatch => bindActionCreators(apiActions, dispatch);
+
 class WelcomeScreen extends React.Component {
   componentWillMount() {
-    console.log(actionCreator)
-    console.log(this.props)
-    // this.props.fetchAllEvents();
-    this.props.eventsFetchedAction();
-    // this.props.dispatch(eventsFetchedAction());
     this.props.fetchAllEvents();
   }
 
@@ -32,4 +22,4 @@ class WelcomeScreen extends React.Component {
   }
 }
 
-export default connect(null, testActionCreator)(WelcomeScreen);
+export default connect(null, apiActions)(WelcomeScreen);

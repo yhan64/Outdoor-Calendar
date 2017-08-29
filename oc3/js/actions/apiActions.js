@@ -1,16 +1,13 @@
-import { ApiActionTypes } from '../reducers/apiReducer';
+import * as ActionTypes from '../constants/ActionTypes';
 
 const baseUrl = 'http://localhost:3030';
 const routes = {
   ALL_EVENTS: '/getEvents'
 }
 
-export const testActionCreator = dispatch => {
-  return async () => dispatch(eventsFetchedAction('events'))
-}
-
-export const fetchAllEvents = async (dispatch) => {
+export const fetchAllEvents = () => {
   return async (dispatch) => {
+    dispatch(fetchingEventsAction());
     try {
       const response = await fetch(baseUrl + routes.ALL_EVENTS, {
         method: 'get',
@@ -21,37 +18,22 @@ export const fetchAllEvents = async (dispatch) => {
       });
       
       const events = await response.json();
-      dispatch(eventsFetchedAction());
-      console.log(events);
-  
+      dispatch(eventsFetchedAction(events));
     } catch (e) {
       console.error(e);
     }
   }
 }
 
-// export async function fetchAllEvents(dispatch) {
-//   try {
-//     const response = await fetch(baseUrl + routes.ALL_EVENTS, {
-//       method: 'get',
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       }
-//     });
-    
-//     const events = await response.json();
-//     dispatch(eventsFetchedAction(events));
-//     console.log(events);
-
-//   } catch (e) {
-//     console.error(e);
-//   }
-// }
-
-export function eventsFetchedAction(events) {
+function fetchingEventsAction() {
   return {
-    type: ApiActionTypes.EVENTS_FETCHED,
+    type: ActionTypes.FETCHING_EVENTS
+  }
+}
+
+function eventsFetchedAction(events) {
+  return {
+    type: ActionTypes.EVENTS_FETCHED,
     events: events
   }
 }

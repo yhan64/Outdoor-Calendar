@@ -1,14 +1,8 @@
-
-export const ApiActionTypes = {
-	EVENTS_FETCHED: 'events_fechted'
-}
-
+import * as ActionTypes from '../constants/ActionTypes';
 
 export default (state, action) => {
     switch (action.type) {
-		case ApiActionTypes.EVENTS_FETCHED:
-			console.log('------------->API reducer------------>')
-			console.log('-------------> EVENTS fetched ----------->')
+		case ActionTypes.EVENTS_FETCHED:
 			return {
 				...state,
 				events: action.events

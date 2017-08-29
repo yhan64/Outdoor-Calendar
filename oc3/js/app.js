@@ -1,13 +1,21 @@
 import React from 'react';
-import { View, Text, AppRegistry } from 'react-native'
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
 import { Provider } from 'react-redux';
 
 import apiReducer from './reducers/apiReducer';
 
 import NavigationWrapper from './NavigationWrapper';
 
-const store = createStore(apiReducer);
+const loggerMiddleware = createLogger()
+const store = createStore(
+    apiReducer,
+    applyMiddleware(
+        thunkMiddleware,
+        loggerMiddleware
+    )
+);
 
 export default () => {
     return (
