@@ -7,19 +7,43 @@ import { fetchAllEvents, eventsFetchedAction } from '../actions/apiActions';
 const apiActions = {
   fetchAllEvents
 }
+// using bindActoinCreator is equivalent to following no bindActionCreator version
+// const foo2 = dispatch => {
+//   return {
+//     actions: {
+//       fae: () => dispatch(fetchAllEvents())
+//     }
+//   }
+// }
 
-const mapDispatchToProps = dispatch => bindActionCreators(apiActions, dispatch);
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(apiActions, dispatch)
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    state: {
+      eventsFetched: state.eventsFetched
+    }
+  }
+}
 
 class WelcomeScreen extends React.Component {
   componentWillMount() {
-    this.props.fetchAllEvents();
+    this.props.actions.fetchAllEvents();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    nextProps.state.eventsFetched && this.props.navigation.navigate('Home');
   }
 
   render() {
     return (
-      <Text> Fetching data....</Text>
+      <Text> Welcome to OC!! I'm fetching data for you :)</Text>
     )
   }
 }
 
-export default connect(null, apiActions)(WelcomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeScreen);

@@ -20,6 +20,7 @@ export const fetchAllEvents = () => {
       const events = await response.json();
       dispatch(eventsFetchedAction(events));
     } catch (e) {
+      dispatch(fetchingEventsFailedAction());
       console.error(e);
     }
   }
@@ -35,5 +36,11 @@ function eventsFetchedAction(events) {
   return {
     type: ActionTypes.EVENTS_FETCHED,
     events: events
+  }
+}
+
+function fetchingEventsFailedAction() {
+  return {
+    type: ActionTypes.FETCHING_EVENTS_FAILED
   }
 }
