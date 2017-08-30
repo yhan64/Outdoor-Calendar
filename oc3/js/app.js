@@ -1,16 +1,18 @@
 import React from 'react';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { Provider } from 'react-redux';
 
 import apiReducer from './reducers/apiReducer';
+import appReducer from './reducers/appReducer';
 
-import NavigationWrapper from './NavigationWrapper';
+import ScreenStackWithModal from './ScreenStackWithModal';
 
 const loggerMiddleware = createLogger()
+const reduers = combineReducers({apiReducer, appReducer});
 const store = createStore(
-    apiReducer,
+    reduers,
     applyMiddleware(
         thunkMiddleware,
         loggerMiddleware
@@ -20,7 +22,7 @@ const store = createStore(
 export default () => {
     return (
         <Provider store={store}>
-            <NavigationWrapper />
+            <ScreenStackWithModal />
         </Provider>
     )
 }

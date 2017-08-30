@@ -1,18 +1,17 @@
 import * as ActionTypes from '../constants/ActionTypes';
 
 const initAppState = {
-	initialized: false
+	showWelcomeModal: true
 }
 
-export default (state, action) => {
+export default (state = initAppState, action) => {
 	switch (action.type) {
-		case ActionTypes.APP_STARTED:
+		case ActionTypes.EVENTS_FETCHED:
 			return {
 				...state,
-				
+				showWelcomeModal: false
 			}
 		default:
 			return state
-
 	}
 }
