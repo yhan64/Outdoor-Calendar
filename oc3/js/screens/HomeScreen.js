@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Text,
   View,
@@ -6,7 +7,13 @@ import {
 } from 'react-native';
 import {Agenda} from 'react-native-calendars';
 
-export default class AgendaScreen extends Component {
+const mapStateToProps = state => {
+  return {
+    events: state.api.events
+  }
+}
+
+class HomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -93,3 +100,5 @@ const styles = StyleSheet.create({
     paddingTop: 30
   }
 });
+
+export default connect(mapStateToProps)(HomeScreen)

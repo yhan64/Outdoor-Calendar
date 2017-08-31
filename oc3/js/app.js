@@ -4,13 +4,13 @@ import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { Provider } from 'react-redux';
 
-import apiReducer from './reducers/apiReducer';
-import appReducer from './reducers/appReducer';
+import api from './reducers/apiReducer';
+import app from './reducers/appReducer';
 
 import ScreenStackWithModal from './ScreenStackWithModal';
 
 const loggerMiddleware = createLogger()
-const reduers = combineReducers({apiReducer, appReducer});
+const reduers = combineReducers({api, app});
 const store = createStore(
     reduers,
     applyMiddleware(

@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Text, Modal } from 'react-native';
+import { Text, View, Modal } from 'react-native';
 
 import { fetchAllEvents, eventsFetchedAction } from '../actions/apiActions';
 const apiActions = {
@@ -25,31 +25,19 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     state: {
-      eventsFetched: state.eventsFetched,
-      showWelcomeModal: state.showWelcomeModal
+      eventsFetched: state.eventsFetched
     }
   }
 }
 
 class WelcomeScreen extends React.Component {
-  componentWillMount() {
-    this.props.actions.fetchAllEvents();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    nextProps.state.eventsFetched && this.props.navigation.navigate('Home');
-  }
-
   render() {
     return (
-      <Modal
-        animationType={"slide"}
-        transparent={false}
-        visible={this.props.state.showWelcomeModal}
-      >
-        <Text> Welcome to OC!! I'm fetching data for you :)</Text>
-      </Modal>
-      
+      <View style={{flex: 1}}>
+        <Modal style={{flex: 1}}>
+          <Text> Welcome to OC!! I'm fetching data for you :)</Text>
+        </Modal>
+      </View>
     )
   }
 }
