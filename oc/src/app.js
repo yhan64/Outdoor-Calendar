@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import Example from './src/example';
+import Example from './example';
 
 console.ignoredYellowBox = ['Remote debugger'];
 

@@ -11,6 +11,9 @@ module.exports = {
       user : 'nvwangdaren',
       password : 'shejingbing',
       database : 'ocwahaha'
+    },
+    seeds: {
+      directory: './seeds'
     }
   },
 

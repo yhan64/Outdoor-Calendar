@@ -18,6 +18,7 @@
 - v1.5.0
   - in app queries (temporary conversations between team lead and people who are interested in, no need to jump out of the app to ask one or two questions)
 - in the future, maybe
-  - type in activities information on desk web
+  - personal calendar (activities that are saved)
+  - enter activities information on desk web
   - grab personal calendar information from emails and recommend trips fit into their schedules
   - report invalid activities

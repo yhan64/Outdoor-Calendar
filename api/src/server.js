@@ -6,11 +6,11 @@ const app = express()
   .use(bodyParser.json());
 
 const routes = {
-  postActivity: '/post',
-  getActivities: '/getAll'
+  postEvent: '/post',
+  getEvents: '/getEvents'
 }
 
-app.post(routes.postActivity, async function (req, res) {
+app.post(routes.postEvent, async function (req, res) {
   // res.send('Hello World!')
   // {duration: 5, start_date: '2017-9-10', end_date: '2017-9-15'}
   console.log('--------------> req.body -------------->')
@@ -20,7 +20,7 @@ app.post(routes.postActivity, async function (req, res) {
   // .then()
   // .then(ans = 'succeeded')  //the two assignment would work, so the fianl value of ans is always failed
   // .catch(ans = 'failed');
-  await db('activities').insert(req.body)
+  await db('events').insert(req.body)
   .then()
   .then(function (data) {
     ans = 'succeeded';
@@ -32,9 +32,10 @@ app.post(routes.postActivity, async function (req, res) {
   .status(200)
   .send(ans)
 })
-
-app.get(routes.getActivities, async function(req, res) {
-  res.send('Hello world');
+// TODO: all events need to be ordered by dates
+app.get(routes.getEvents, async function(req, res) {
+  const events = await db.select().table('events').then();
+  res.send(events);
 })
 
 app.get('/', async function(req, res) {
