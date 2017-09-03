@@ -2,6 +2,7 @@ import * as ActionTypes from '../constants/ActionTypes';
 import * as ModalNames from '../constants/ModalNames';
 
 const initAppState = {
+	eventsOnDays: {},
 	modalInfo: {
 		showModal: true,
 		modalName: ModalNames.WELCOME_MODAL
@@ -10,10 +11,10 @@ const initAppState = {
 
 export default (state = initAppState, action) => {
 	switch (action.type) {
-		case ActionTypes.EVENTS_FETCHED:
+		case ActionTypes.EVENTS_ON_DAYS_CONVERTED:
 			return {
 				...state,
-				showModal: false
+				eventsOnDays: action.eventsOnDays
 			}
 		default:
 			return state

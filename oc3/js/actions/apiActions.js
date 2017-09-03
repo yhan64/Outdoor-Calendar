@@ -1,4 +1,5 @@
 import * as ActionTypes from '../constants/ActionTypes';
+import { getEventsOnDays } from './appActions'
 
 const baseUrl = 'http://localhost:3030';
 const routes = {
@@ -16,13 +17,14 @@ export const fetchAllEvents = () => {
           'Content-Type': 'application/json'
         }
       });
-      
-      const events = await response.json();
-      dispatch(eventsFetchedAction(events));
+      const events = Array.from(await response.json())
+      dispatch(eventsFetchedAction(events))
+      dispatch(getEventsOnDays(events))
     } catch (e) {
-      dispatch(fetchingEventsFailedAction());
+      dispatch(fetchingEventsFailedAction())
       console.error(e);
     }
+    
   }
 }
 

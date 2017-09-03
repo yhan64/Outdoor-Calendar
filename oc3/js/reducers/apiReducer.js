@@ -1,7 +1,7 @@
 import * as ActionTypes from '../constants/ActionTypes';
 
 const initApiState = {
-	events: {},
+	events: [],
 	eventsFetched: false,
 	isFetchingEvents: false
 }

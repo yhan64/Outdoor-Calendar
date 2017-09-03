@@ -1,1 +1,5 @@
-a simple setup of React Native + Redux
+### Data type in store
+**events**
+Array<Object>
+**eventsOnDays**
+Object

@@ -32,7 +32,7 @@ app.post(routes.postEvent, async function (req, res) {
   .status(200)
   .send(ans)
 })
-
+// TODO: all events need to be ordered by dates
 app.get(routes.getEvents, async function(req, res) {
   const events = await db.select().table('events').then();
   res.send(events);
