@@ -87,19 +87,20 @@ async function saveEventFromURLToDB(url) {
 }
 
 async function saveEventFromObjToDB(event) {
-  const hasEventExisted = await db('events').select('title').where('title', event.title).then()
-  if (hasEventExisted) {
-    console.info('EXISTED: did not insert existing event: \"' + event.title + '\"')
+  const existingEvents = await db('events').select('id').where('source', event.source).then()
+  if (existingEvents.length < 1) {
+    await db('events').insert(event)
+    .then()
+    .then(() => {
+      console.info('INSERTED event: \"' + event.title + '\"')
+    })
+    .catch((e) => {
+      console.log(e)
+    });
     return
   }
-  await db('events').insert(event)
-  .then()
-  .then(() => {
-    console.info('SUCCESS: insertted event: \"' + event.title + '\"')
-  })
-  .catch((e) => {
-    console.log(e)
-  });
+  await db('events').where('source', event.source).update(event)
+  console.info('UPDATED event: \"' + event.title + '\"')
 }
 
 
