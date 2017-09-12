@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "export NODE_ENV=development; nodemon src/server.js --exec babel-node",
+    "crawler": "export NODE_ENV=development; nodemon src/crawler.js --exec babel-node",
     "build": "babel --presets es2015 src -d dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && node dist/server.js"
@@ -13,10 +14,15 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
+    "cheerio-advanced-selectors": "^1.1.1",
     "express": "^4.15.3",
     "knex": "^0.13.0",
     "moment": "^2.18.1",
-    "pg": "^7.0.2"
+    "pg": "^7.0.2",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "url-parse": "^1.1.9"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
