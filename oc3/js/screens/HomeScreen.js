@@ -12,14 +12,22 @@ class HomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: {}
+      items: {},
+      date: {}
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(this.props.eventsOnDays !== prevProps.eventsOnDays) {
+      this.fillEmptyDays(this.state.date)
+    }
   }
 
   render() {
     return (
       <Agenda
-        items={this.props.eventsOnDays}
+        items={this.state.items}
+        loadItemsForMonth={this.fillEmptyDays}
         selected={''}
         renderItem={this.renderItem}
         renderEmptyDate={this.renderEmptyDate}
@@ -30,17 +38,34 @@ class HomeScreen extends Component {
     );
   }
 
+  fillEmptyDays = (date) => {
+    this.setState({date})
+    if(!this.props.eventsOnDays || Object.keys(this.props.eventsOnDays).length < 1) {
+      return
+    }
+   
+    let eventsOnDays = this.props.eventsOnDays
+    const month = date.month
+    const firstDay = moment([date.year, date.month - 1])
+    const lastDay = moment(firstDay).endOf('month')
+    for( let currDate = firstDay; currDate.diff(lastDay) <= 0; currDate.add(1, 'days')) {
+      if(!eventsOnDays[currDate.format('YYYY-MM-DD')]) {
+        eventsOnDays[currDate.format('YYYY-MM-DD')] = []
+      }
+    }
+    this.setState({items: eventsOnDays})
+  }
   renderItem = (item) => {
     return (
       <View style={[styles.item, {height: item.height}]}>
-        <Text>{item.description}</Text>
+        <Text>{item.title}</Text>
       </View>
     );
   }
 
   renderEmptyDate = () => {
     return (
-      <View style={styles.emptyDate}><Text>This is empty date!</Text></View>
+      <View style={styles.emptyDate}><Text>No events today</Text></View>
     );
   }
 
