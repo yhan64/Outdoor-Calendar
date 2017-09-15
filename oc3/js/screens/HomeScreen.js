@@ -9,6 +9,10 @@ import {Agenda} from 'react-native-calendars'
 import moment from 'moment'
 
 class HomeScreen extends Component {
+  static navigationOptions = {
+    title: 'Welcome to OC',
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +22,7 @@ class HomeScreen extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(this.props.eventsOnDays !== prevProps.eventsOnDays) {
+    if(this.props.eventsOnDays !== prevProps.eventsOnDays || this.state.date !== prevState.date) {
       this.fillEmptyDays(this.state.date)
     }
   }
@@ -27,8 +31,9 @@ class HomeScreen extends Component {
     return (
       <Agenda
         items={this.state.items}
-        loadItemsForMonth={this.fillEmptyDays}
+        loadItemsForMonth={this.setCurrDate}
         selected={''}
+        onDayPress={this.setCurrDate}
         renderItem={this.renderItem}
         renderEmptyDate={this.renderEmptyDate}
         rowHasChanged={this.rowHasChanged}
@@ -38,8 +43,11 @@ class HomeScreen extends Component {
     );
   }
 
-  fillEmptyDays = (date) => {
+  setCurrDate = (date) => {
     this.setState({date})
+  }
+
+  fillEmptyDays = (date) => {
     if(!this.props.eventsOnDays || Object.keys(this.props.eventsOnDays).length < 1) {
       return
     }
