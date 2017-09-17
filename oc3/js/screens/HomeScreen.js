@@ -9,18 +9,31 @@ import {Agenda} from 'react-native-calendars'
 import moment from 'moment'
 
 class HomeScreen extends Component {
+  static navigationOptions = {
+    title: 'Welcome to OC',
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      items: {}
+      items: {},
+      date: {}
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(this.props.eventsOnDays !== prevProps.eventsOnDays || this.state.date !== prevState.date) {
+      this.fillEmptyDays(this.state.date)
+    }
   }
 
   render() {
     return (
       <Agenda
-        items={this.props.eventsOnDays}
+        items={this.state.items}
+        loadItemsForMonth={this.setCurrDate}
         selected={''}
+        onDayPress={this.setCurrDate}
         renderItem={this.renderItem}
         renderEmptyDate={this.renderEmptyDate}
         rowHasChanged={this.rowHasChanged}
@@ -30,17 +43,37 @@ class HomeScreen extends Component {
     );
   }
 
+  setCurrDate = (date) => {
+    this.setState({date})
+  }
+
+  fillEmptyDays = (date) => {
+    if(!this.props.eventsOnDays || Object.keys(this.props.eventsOnDays).length < 1) {
+      return
+    }
+   
+    let eventsOnDays = this.props.eventsOnDays
+    const month = date.month
+    const firstDay = moment([date.year, date.month - 1])
+    const lastDay = moment(firstDay).endOf('month')
+    for( let currDate = firstDay; currDate.diff(lastDay) <= 0; currDate.add(1, 'days')) {
+      if(!eventsOnDays[currDate.format('YYYY-MM-DD')]) {
+        eventsOnDays[currDate.format('YYYY-MM-DD')] = []
+      }
+    }
+    this.setState({items: eventsOnDays})
+  }
   renderItem = (item) => {
     return (
       <View style={[styles.item, {height: item.height}]}>
-        <Text>{item.description}</Text>
+        <Text>{item.title}</Text>
       </View>
     );
   }
 
   renderEmptyDate = () => {
     return (
-      <View style={styles.emptyDate}><Text>This is empty date!</Text></View>
+      <View style={styles.emptyDate}><Text>No events today</Text></View>
     );
   }
 

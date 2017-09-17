@@ -14,10 +14,8 @@ export function getEventsOnDays(events) {
           eventsOnDays[formattedCurrDate] = []
         }
         eventsOnDays[formattedCurrDate].push({
-          // description: event.description,
-          // destination: event.destination
-          description: 'Description on ' + formattedCurrDate,
-          destination: 'Destination of ' + formattedCurrDate
+          title: event.title || event.description,
+          description: event.description,
         })
       }
     });

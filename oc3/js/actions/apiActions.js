@@ -1,7 +1,9 @@
-import * as ActionTypes from '../constants/ActionTypes';
+import { Platform } from 'react-native'
+import * as ActionTypes from '../constants/ActionTypes'
 import { getEventsOnDays } from './appActions'
 
-const baseUrl = 'http://localhost:3030';
+const baseUrl = Platform.OS === 'ios' ? 'http://localhost:3030' : 'http://10.0.3.2:3030'
+
 const routes = {
   ALL_EVENTS: '/getEvents'
 }
