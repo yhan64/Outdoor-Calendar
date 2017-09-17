@@ -13,9 +13,10 @@ class CreateEventScreen extends Component {
 
   render() {
     const { params } = this.props.navigation.state;
+    console.log(params)
     return (
       <View>
-        <Text>CreateEventScreen on </Text>
+        <Text>CreateEventScreen on {params.date.dateString} </Text>
       </View>
     )
   }
