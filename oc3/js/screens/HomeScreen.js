@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
   Text,
   View,
-  StyleSheet
+  StyleSheet,
+  TouchableHighlight
 } from 'react-native'
-import {Agenda} from 'react-native-calendars'
+import { Agenda } from 'react-native-calendars'
 import moment from 'moment'
 
 class HomeScreen extends Component {
@@ -29,7 +30,8 @@ class HomeScreen extends Component {
 
   render() {
     return (
-      <Agenda
+      <View style={styles.homeContainer}>
+        <Agenda
         items={this.state.items}
         loadItemsForMonth={this.setCurrDate}
         selected={''}
@@ -39,12 +41,17 @@ class HomeScreen extends Component {
         rowHasChanged={this.rowHasChanged}
         // theme={{calendarBackground: 'red', agendaKnobColor: 'green'}}
         //renderDay={(day, item) => (<Text>{day ? day.day: 'item'}</Text>)}
-      />
+        />
+        <TouchableHighlight style={styles.createEventButton}>
+          <Text style={styles.cross}> + </Text>
+        </TouchableHighlight>
+      </View>
     );
   }
 
   setCurrDate = (date) => {
     this.setState({date})
+
   }
 
   fillEmptyDays = (date) => {
@@ -83,7 +90,14 @@ class HomeScreen extends Component {
 
 }
 
+const createEventButtonDia = 50
+const colors = {
+  createPink: '#FFDAB9'
+}
 const styles = StyleSheet.create({
+  homeContainer: {
+    flex: 1
+  },
   item: {
     backgroundColor: 'white',
     flex: 1,
@@ -96,6 +110,24 @@ const styles = StyleSheet.create({
     height: 15,
     flex:1,
     paddingTop: 30
+  },
+  createEventButton: {
+    flex: 1,
+    borderWidth:1,
+    borderColor: colors.createPink,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: createEventButtonDia,
+    height: createEventButtonDia,
+    backgroundColor: colors.createPink,
+    borderRadius: createEventButtonDia,
+    position: 'absolute',
+    right: 10,
+    bottom: 20
+  },
+  cross: {
+    fontSize: 30,
+    color: 'white'
   }
 });
 
