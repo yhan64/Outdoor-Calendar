@@ -29,6 +29,7 @@ class HomeScreen extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.homeContainer}>
         <Agenda
@@ -42,7 +43,10 @@ class HomeScreen extends Component {
         // theme={{calendarBackground: 'red', agendaKnobColor: 'green'}}
         //renderDay={(day, item) => (<Text>{day ? day.day: 'item'}</Text>)}
         />
-        <TouchableHighlight style={styles.createEventButton}>
+        <TouchableHighlight 
+          style={styles.createEventButton}
+          onPress={() => navigate('CreateEventScreen', { date: this.state.date })}
+        >
           <Text style={styles.cross}> + </Text>
         </TouchableHighlight>
       </View>

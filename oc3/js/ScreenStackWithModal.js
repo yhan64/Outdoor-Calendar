@@ -5,10 +5,10 @@ import { bindActionCreators } from 'redux';
 import { StackNavigator } from 'react-navigation'
 import { View } from 'react-native'
 import HomeScreen from './screens/HomeScreen'
-import ChatScreen from './screens/ChatScreen'
+import CreateEventScreen from './screens/CreateEventScreen'
 import WelcomeScreen from './screens/WelcomeScreen'
 import * as ModalNames from './constants/ModalNames'
-import { fetchAllEvents } from './actions/apiActions';
+import { fetchAllEvents } from './actions/apiActions'
 const apiActions = {
   fetchAllEvents
 }
@@ -36,7 +36,7 @@ const mapDispatchToProps = dispatch => {
 
 const ScreenStack = StackNavigator({
   HomeScreen: { screen: HomeScreen },
-  ChatScreen: { screen: ChatScreen }
+  CreateEventScreen: { screen: CreateEventScreen }
 });
 
 const showModal = (modalInfo) => {
