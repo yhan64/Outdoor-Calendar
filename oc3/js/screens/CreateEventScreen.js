@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 import {
   Text,
   View,
-  StyleSheet
+  StyleSheet,
+  TextInput
 } from 'react-native'
+import EventTypePicker from 'oc3/js/components/EventTypePicker'
 
 class CreateEventScreen extends Component {
   static navigationOptions = {
@@ -15,11 +17,23 @@ class CreateEventScreen extends Component {
     const { params } = this.props.navigation.state;
     console.log(params)
     return (
-      <View>
+      <View style={styles.container}>
         <Text>CreateEventScreen on {params.date.dateString} </Text>
+        <EventTypePicker />
       </View>
     )
   }
 }
+
+const colors = {
+  background: '#f4f4f4'
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.background
+  }
+})
 
 export default CreateEventScreen

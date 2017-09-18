@@ -4,8 +4,8 @@ import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { Provider } from 'react-redux';
 
-import api from './reducers/apiReducer';
-import app from './reducers/appReducer';
+import api from 'oc3/js/reducers/apiReducer';
+import app from 'oc3/js/reducers/appReducer';
 
 import ScreenStackWithModal from './ScreenStackWithModal';
 

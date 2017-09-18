@@ -1,11 +1,11 @@
-import * as ActionTypes from '../constants/ActionTypes';
-import * as ModalNames from '../constants/ModalNames';
+import * as ActionTypes from 'oc3/js/constants/ActionTypes';
+import * as ModalNames from 'oc3/js//constants/ModalNames';
 
 const initAppState = {
 	eventsOnDays: {},
 	modalInfo: {
-		showModal: true,
-		modalName: ModalNames.WELCOME_MODAL
+		showModal: false,
+		modalName: ''
 	}
 }
 

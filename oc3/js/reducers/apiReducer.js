@@ -1,4 +1,4 @@
-import * as ActionTypes from '../constants/ActionTypes';
+import * as ActionTypes from 'oc3/js/constants/ActionTypes';
 
 const initApiState = {
 	events: [],

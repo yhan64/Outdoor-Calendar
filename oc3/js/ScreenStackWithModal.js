@@ -4,19 +4,18 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { StackNavigator } from 'react-navigation'
 import { View } from 'react-native'
-import HomeScreen from './screens/HomeScreen'
-import CreateEventScreen from './screens/CreateEventScreen'
-import WelcomeScreen from './screens/WelcomeScreen'
-import * as ModalNames from './constants/ModalNames'
-import { fetchAllEvents } from './actions/apiActions'
+import HomeScreen from 'oc3/js/screens/HomeScreen'
+import CreateEventScreen from 'oc3/js/screens/CreateEventScreen'
+import WelcomeScreen from 'oc3/js/screens/WelcomeScreen'
+import * as ModalNames from 'oc3/js/constants/ModalNames'
+import { fetchAllEvents } from 'oc3/js/actions/apiActions'
 const apiActions = {
   fetchAllEvents
 }
 
 const mapStateToProps = (state) => {
   return {
-    modalInfo: state.app.modalInfo,
-    showModal: state.app.showModal
+    modalInfo: state.app.modalInfo
   }
 }
 // using bindActoinCreator is equivalent to following no bindActionCreator version
@@ -54,11 +53,13 @@ class ScreenStackWithModal extends React.Component {
   componentDidMount() {
     this.props.actions.fetchAllEvents();
   }
+  
   render () {
+    console.log(this.props)
     return (
       <View style={{flex: 1}}>
         <ScreenStack />
-        { this.props.showModal && this.props.modalInfo && showModal(this.props.modalInfo)}
+        { this.props.modalInfo && this.props.modalInfo.showModal && showModal(this.props.modalInfo)}
       </View>
     )
   }
