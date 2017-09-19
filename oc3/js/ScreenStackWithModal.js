@@ -7,6 +7,7 @@ import { View } from 'react-native'
 import HomeScreen from 'oc3/js/screens/HomeScreen'
 import CreateEventScreen from 'oc3/js/screens/CreateEventScreen'
 import WelcomeScreen from 'oc3/js/screens/WelcomeScreen'
+import EventDetailsScreen from 'oc3/js/screen/EventDetailsScreen'
 import * as ModalNames from 'oc3/js/constants/ModalNames'
 import { fetchAllEvents } from 'oc3/js/actions/apiActions'
 const apiActions = {
@@ -41,9 +42,13 @@ const ScreenStack = StackNavigator({
 const showModal = (modalInfo) => {
   switch(modalInfo.modalName) {
     case ModalNames.WELCOME_MODAL:
-    return (
-      <WelcomeScreen />
-    )
+      return (
+        <WelcomeScreen />
+      )
+    case ModalNames.EVENT_DETAILS:
+      return (
+        <EventDetailsScreen />
+      )
     default:
       return null
   }

@@ -1,6 +1,18 @@
 import moment from 'moment'
 import * as ActionTypes from '../constants/ActionTypes';
 
+export function showEventDetailsScreen() {
+  return {
+    type: ActionTypes.SHOW_EVENT_DETAILS_MODAL
+  }
+}
+
+export function closeEventDetailsScreen() {
+  return {
+    type: ActionTypes.CLOSE_EVENT_DETAILS_MODAL
+  }
+}
+
 export function getEventsOnDays(events) {
   return (dispatch, getState) => {
     const currEvents = events || getState().api.events
