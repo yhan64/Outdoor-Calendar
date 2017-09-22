@@ -10,10 +10,6 @@ import { Agenda } from 'react-native-calendars'
 import moment from 'moment'
 
 class HomeScreen extends Component {
-  static navigationOptions = {
-    title: 'Welcome to OC',
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -29,7 +25,6 @@ class HomeScreen extends Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation
     return (
       <View style={styles.homeContainer}>
         <Agenda
@@ -45,7 +40,7 @@ class HomeScreen extends Component {
         />
         <TouchableHighlight 
           style={styles.createEventButton}
-          onPress={() => navigate('CreateEventScreen', { date: this.state.date })}
+          onPress={() => {}}
         >
           <Text style={styles.cross}> + </Text>
         </TouchableHighlight>

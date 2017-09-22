@@ -16,7 +16,7 @@ export default (state = initAppState, action) => {
 				...state,
 				eventsOnDays: action.eventsOnDays
 			}
-		case ActionTypes.SHOW_EVENT_DETAILS_MODAL
+		case ActionTypes.SHOW_EVENT_DETAILS_MODAL:
 			return {
 				...state,
 				modalInfo: {
