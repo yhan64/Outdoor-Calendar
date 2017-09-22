@@ -90,8 +90,8 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 25 //set it to 25 because of react-native-navigation
+    buildToolsVersion '25.0.1' //set it to 25.0.1 because of react-native-navigation
 
     defaultConfig {
         applicationId "com.oc"
@@ -136,6 +136,12 @@ dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
+    // followings are for react-native-navigation
+    compile fileTree(dir: "libs", include: ["*.jar"])
+    compile "com.android.support:appcompat-v7:23.0.1"
+    compile "com.facebook.react:react-native:+"
+    compile project(':react-native-navigation')
+    // end of deps for react-native-navigation
 }
 
 // Run this once to be able to run the application with BUCK
