@@ -1,4 +1,4 @@
-import * as ActionTypes from 'oc3/js/constants/ActionTypes';
+import * as actionTypes from 'oc/js/constants/actionTypes';
 
 const initApiState = {
 	events: [],
@@ -8,19 +8,19 @@ const initApiState = {
 
 export default (state = initApiState, action) => {
     switch (action.type) {
-		case ActionTypes.EVENTS_FETCHED:
+		case actionTypes.EVENTS_FETCHED:
 			return {
 				...state,
 				events: action.events,
 				eventsFetched: true,
 				isFetchingEvents: false
 			}
-		case ActionTypes.FETCHING_EVENTS:
+		case actionTypes.FETCHING_EVENTS:
 			return {
 				...state,
 				isFetchingEvents: true
 			}
-		case ActionTypes.FETCHING_EVENTS_FAILED:
+		case actionTypes.FETCHING_EVENTS_FAILED:
 			return {
 				...state,
 				isFetchingEvents: false
