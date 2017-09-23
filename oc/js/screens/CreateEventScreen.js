@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TextInput
 } from 'react-native'
-import EventTypePicker from 'oc3/js/components/EventTypePicker'
+import EventTypePicker from 'oc/js/components/EventTypePicker'
 
 class CreateEventScreen extends Component {
   static navigationOptions = {

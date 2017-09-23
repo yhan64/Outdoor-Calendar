@@ -1,5 +1,5 @@
-import * as ActionTypes from 'oc3/js/constants/ActionTypes';
-import * as ModalNames from 'oc3/js//constants/ModalNames';
+import * as actionTypes from 'oc/js/constants/actionTypes';
+import * as modalNames from 'oc/js//constants/modalNames';
 
 const initAppState = {
 	eventsOnDays: {},
@@ -11,17 +11,17 @@ const initAppState = {
 
 export default (state = initAppState, action) => {
 	switch (action.type) {
-		case ActionTypes.EVENTS_ON_DAYS_CONVERTED:
+		case actionTypes.EVENTS_ON_DAYS_CONVERTED:
 			return {
 				...state,
 				eventsOnDays: action.eventsOnDays
 			}
-		case ActionTypes.SHOW_EVENT_DETAILS_MODAL:
+		case actionTypes.SHOW_EVENT_DETAILS_MODAL:
 			return {
 				...state,
 				modalInfo: {
 					showModal: true,
-					modalName: ModalNames.EVENT_DETAILS
+					modalName: modalNames.EVENT_DETAILS
 				}
 			}
 		default:

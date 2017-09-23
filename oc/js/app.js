@@ -5,34 +5,28 @@ import { createLogger } from 'redux-logger'
 import { Provider } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 // reducers
-import api from 'oc3/js/reducers/apiReducer';
-import app from 'oc3/js/reducers/appReducer';
-// screens
-import HomeScreen from 'oc3/js/screens/HomeScreen';
-// register each screen with store
+import api from 'oc/js/reducers/apiReducer';
+import app from 'oc/js/reducers/appReducer';
+
+// others
+import registry from './registry'
+import * as screenNames from 'oc/js/constants/screenNames'
 
 const loggerMiddleware = createLogger()
-const reduers = combineReducers({api, app});
+const reducers = combineReducers({api, app});
 const store = createStore(
-  reduers,
+  reducers,
   applyMiddleware(
       thunkMiddleware,
       loggerMiddleware
   )
 );
 
-const wrappedHomeScreen = () => {
-  return (
-    <Provider store={store}><HomeScreen /></Provider>
-  )
-}
-
-Navigation.registerComponent('HomeScreen',
-    () => wrappedHomeScreen)
+registry(store, Provider)
 
 Navigation.startSingleScreenApp({
   screen: {
-      screen: 'HomeScreen',
+      screen: screenNames.HOME,
       title: 'Welcome to OC',
   },
   appStyle: {
