@@ -1,15 +1,15 @@
 import moment from 'moment'
-import * as ActionTypes from '../constants/ActionTypes';
+import * as actionTypes from '../constants/actionTypes';
 
 export function showEventDetailsScreen() {
   return {
-    type: ActionTypes.SHOW_EVENT_DETAILS_MODAL
+    type: actionTypes.SHOW_EVENT_DETAILS_MODAL
   }
 }
 
 export function closeEventDetailsScreen() {
   return {
-    type: ActionTypes.CLOSE_EVENT_DETAILS_MODAL
+    type: actionTypes.CLOSE_EVENT_DETAILS_MODAL
   }
 }
 
@@ -37,7 +37,7 @@ export function getEventsOnDays(events) {
 
 function getEventsOnDaysAction(eventsOnDays) {
   return {
-    type: ActionTypes.EVENTS_ON_DAYS_CONVERTED,
+    type: actionTypes.EVENTS_ON_DAYS_CONVERTED,
     eventsOnDays
   }
 }
