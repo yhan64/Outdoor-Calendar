@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 import {
   Text,
   View,
@@ -9,6 +10,24 @@ import {
 import { Agenda } from 'react-native-calendars'
 import moment from 'moment'
 
+import { fetchAllEvents } from 'oc/js/actions/apiActions'
+const apiActions = {
+  fetchAllEvents
+}
+
+const mapStateToProps = state => {
+  return {
+    eventsOnDays: state.app.eventsOnDays
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(apiActions, dispatch)
+  }
+}
+
+
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +35,10 @@ class HomeScreen extends Component {
       items: {},
       date: {}
     };
+  }
+
+  componentDidMount() {
+    this.props.actions.fetchAllEvents();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -130,10 +153,5 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => {
-  return {
-    eventsOnDays: state.app.eventsOnDays
-  }
-}
 
-export default connect(mapStateToProps)(HomeScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

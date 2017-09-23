@@ -1,5 +1,5 @@
 import { Platform } from 'react-native'
-import * as ActionTypes from '../constants/ActionTypes'
+import * as actionTypes from '../constants/actionTypes'
 import { getEventsOnDays } from './appActions'
 
 const baseUrl = Platform.OS === 'ios' ? 'http://localhost:3030' : 'http://10.0.3.2:3030'
@@ -32,19 +32,19 @@ export const fetchAllEvents = () => {
 
 function fetchingEventsAction() {
   return {
-    type: ActionTypes.FETCHING_EVENTS
+    type: actionTypes.FETCHING_EVENTS
   }
 }
 
 function eventsFetchedAction(events) {
   return {
-    type: ActionTypes.EVENTS_FETCHED,
+    type: actionTypes.EVENTS_FETCHED,
     events: events
   }
 }
 
 function fetchingEventsFailedAction() {
   return {
-    type: ActionTypes.FETCHING_EVENTS_FAILED
+    type: actionTypes.FETCHING_EVENTS_FAILED
   }
 }
