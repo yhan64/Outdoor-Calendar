@@ -3,10 +3,7 @@ import * as modalNames from 'oc/js//constants/modalNames';
 
 const initAppState = {
 	eventsOnDays: {},
-	modalInfo: {
-		showModal: false,
-		modalName: ''
-	}
+	selectedEventDetails: {}
 }
 
 export default (state = initAppState, action) => {
@@ -19,10 +16,7 @@ export default (state = initAppState, action) => {
 		case actionTypes.SHOW_EVENT_DETAILS_MODAL:
 			return {
 				...state,
-				modalInfo: {
-					showModal: true,
-					modalName: modalNames.EVENT_DETAILS
-				}
+				selectedEventDetails: action.eventDetails
 			}
 		default:
 			return state
