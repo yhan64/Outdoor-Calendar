@@ -9,24 +9,26 @@ import {
 } from 'react-native'
 import { Agenda } from 'react-native-calendars'
 import moment from 'moment'
-import { Navigation } from 'react-native-navigation'
-
-import * as screenNames from 'oc/js/constants/screenNames'
 
 import { fetchAllEvents } from 'oc/js/actions/apiActions'
 const apiActions = {
   fetchAllEvents
 }
 
-const mapStateToProps = state => {
+import { showEventDetailsOn } from 'oc/js/actions/appActions'
+const appActions = {
+  showEventDetailsOn
+}
+
+function mapStateToProps(state) {
   return {
     eventsOnDays: state.app.eventsOnDays
   }
 }
 
-const mapDispatchToProps = dispatch => {
+function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(apiActions, dispatch)
+    actions: bindActionCreators({...apiActions, ...appActions}, dispatch)
   }
 }
 
@@ -99,9 +101,7 @@ class HomeScreen extends Component {
     return (
       <TouchableHighlight
         style={[styles.item, {height: item.height}]} 
-        onPress={ () => Navigation.showModal({
-          screen: screenNames.EVENT_DETAILS
-        })}
+        onPress={ () => this.props.actions.showEventDetailsOn(item.date) }
       >
         <Text>{item.title}</Text>
       </TouchableHighlight>

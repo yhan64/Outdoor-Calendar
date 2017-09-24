@@ -1,9 +1,32 @@
 import moment from 'moment'
-import * as actionTypes from '../constants/actionTypes';
+import { Navigation } from 'react-native-navigation'
+import * as actionTypes from '../constants/actionTypes'
+import * as screenNames from 'oc/js/constants/screenNames'
 
-export function showEventDetailsScreen() {
+
+export function showEventDetailsOn(date) {
+  return (dispatch, getState) => {
+    const details = getEventDetailsOn(date, getState)
+    dispatch(showEventDetailsAction(details))
+    Navigation.showModal({
+      screen: screenNames.EVENT_DETAILS,
+      
+    })
+  }  
+}
+
+function getEventDetailsOn(date, getState) {
+  const details = getState().app.eventsOnDays[date]
+  if(details && details.length > 0) {
+    return details[0]
+  }
+  return {currDate: date, description: 'No Event on the day'}
+}
+
+function showEventDetailsAction(eventDetails) {
   return {
-    type: actionTypes.SHOW_EVENT_DETAILS_MODAL
+    type: actionTypes.SHOW_EVENT_DETAILS_MODAL,
+    eventDetails
   }
 }
 
@@ -26,8 +49,9 @@ export function getEventsOnDays(events) {
           eventsOnDays[formattedCurrDate] = []
         }
         eventsOnDays[formattedCurrDate].push({
+          ...event,
           title: event.title || event.description,
-          description: event.description,
+          date: formattedCurrDate
         })
       }
     });
