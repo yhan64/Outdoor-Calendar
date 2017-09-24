@@ -5,8 +5,8 @@
 ; Ignore "BUCK" generated dirs
 <PROJECT_ROOT>/\.buckd/
 
-; Ignore unexpected extra "@providesModule"
-.*/node_modules/.*/node_modules/fbjs/.*
+; Ignore unexpected errors from node_modules
+.*/node_modules/.*
 
 ; Ignore duplicate module providers
 ; For RN Apps installed via npm, "Libraries" folder is inside
@@ -42,4 +42,4 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
 unsafe.enable_getters_and_setters=true
 
 [version]
-^0.49.1
+^0.55.0
