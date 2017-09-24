@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+// @flow
+import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import {
@@ -9,31 +10,19 @@ import {
 } from 'react-native'
 import { Agenda } from 'react-native-calendars'
 import moment from 'moment'
-
 import { fetchAllEvents } from 'oc/js/actions/apiActions'
 const apiActions = {
   fetchAllEvents
 }
-
 import { showEventDetailsOn } from 'oc/js/actions/appActions'
 const appActions = {
   showEventDetailsOn
 }
+import TextEntry from 'oc/js/components/TextEntry'
 
-function mapStateToProps(state) {
-  return {
-    eventsOnDays: state.app.eventsOnDays
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({...apiActions, ...appActions}, dispatch)
-  }
-}
-
-
-class HomeScreen extends Component {
+class HomeScreen extends React.Component<Object, Object> {
+  props: Object
+  state: Object
   constructor(props) {
     super(props);
     this.state = {
@@ -98,13 +87,12 @@ class HomeScreen extends Component {
     this.setState({items: eventsOnDays})
   }
   renderItem = (item) => {
+    // <TextEntry onPress={() => this.props.actions.showEventDetailsOn(item.date)} />
+    // above doesn't work since onPress has 'this', couldn't pass it directly
+    // have to define the function before pass it to a child component
+    const onPress = () => this.props.actions.showEventDetailsOn(item.date);
     return (
-      <TouchableHighlight
-        style={[styles.item, {height: item.height}]} 
-        onPress={ () => this.props.actions.showEventDetailsOn(item.date) }
-      >
-        <Text>{item.title}</Text>
-      </TouchableHighlight>
+      <TextEntry bodyText={item.title} onPress={onPress} />
     );
   }
 
@@ -127,14 +115,6 @@ const colors = {
 const styles = StyleSheet.create({
   homeContainer: {
     flex: 1
-  },
-  item: {
-    backgroundColor: 'white',
-    flex: 1,
-    borderRadius: 5,
-    padding: 10,
-    marginRight: 10,
-    marginTop: 17
   },
   emptyDate: {
     height: 15,
@@ -161,5 +141,16 @@ const styles = StyleSheet.create({
   }
 });
 
+function mapStateToProps(state) {
+  return {
+    eventsOnDays: state.app.eventsOnDays
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({...apiActions, ...appActions}, dispatch)
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
