@@ -9,6 +9,9 @@ import {
 } from 'react-native'
 import { Agenda } from 'react-native-calendars'
 import moment from 'moment'
+import { Navigation } from 'react-native-navigation'
+
+import * as screenNames from 'oc/js/constants/screenNames'
 
 import { fetchAllEvents } from 'oc/js/actions/apiActions'
 const apiActions = {
@@ -94,9 +97,14 @@ class HomeScreen extends Component {
   }
   renderItem = (item) => {
     return (
-      <View style={[styles.item, {height: item.height}]}>
+      <TouchableHighlight
+        style={[styles.item, {height: item.height}]} 
+        onPress={ () => Navigation.showModal({
+          screen: screenNames.EVENT_DETAILS
+        })}
+      >
         <Text>{item.title}</Text>
-      </View>
+      </TouchableHighlight>
     );
   }
 
