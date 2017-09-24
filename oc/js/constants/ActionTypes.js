@@ -4,6 +4,7 @@ export const DATA_INITIALIZED = 'data-initialized'
 export const EVENTS_ON_DAYS_CONVERTED = 'events-on-days-converted'
 export const SHOW_EVENT_DETAILS_MODAL = 'show-event-details-modal'
 export const CLOSE_EVENT_DETAILS_MODAL = 'close-event-details-modal'
+export const DISMISS_MODAL = 'dismiss-modal'
 
 // api actions
 export const EVENTS_FETCHED = 'events-fechted'
