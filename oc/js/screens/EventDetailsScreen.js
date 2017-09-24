@@ -18,9 +18,6 @@ class EventDetailsScreen extends React.Component {
   static navigatorStyle = modalNavStyle
   
   render () {
-    // if(this.props.selectedEventDetails) {
-    //   return null
-    // }
     return(
       <View style={styles.container}>
           <Text> This is a Event Details Modal on {this.props.selectedEventDetails.date}</Text>
