@@ -3,6 +3,18 @@ import { Navigation } from 'react-native-navigation'
 import * as actionTypes from '../constants/actionTypes'
 import * as screenNames from 'oc/js/constants/screenNames'
 
+export function dismissModal() {
+  return (dispatch) => {
+    Navigation.dismissModal()
+    dispatch(dismissModalAction())
+  }
+}
+
+function dismissModalAction() {
+  return {
+    type: actionTypes.DISMISS_MODAL
+  }
+}
 
 export function showEventDetailsOn(date) {
   return (dispatch, getState) => {
