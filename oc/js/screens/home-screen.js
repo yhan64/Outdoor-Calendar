@@ -90,7 +90,7 @@ class HomeScreen extends React.Component<Object, Object> {
     // <TextEntry onPress={() => this.props.actions.showEventDetailsOn(item.date)} />
     // above doesn't work since onPress has 'this', couldn't pass it directly
     // have to define the function before pass it to a child component
-    const onPress = () => this.props.actions.showEventDetailsOn(item.date);
+    const onPress = () => this.props.actions.showEventDetailsOn(item.date, item.index);
     return (
       <TextEntry bodyText={item.title} onPress={onPress} />
     );

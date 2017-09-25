@@ -16,9 +16,9 @@ function dismissModalAction() {
   }
 }
 
-export function showEventDetailsOn(date) {
+export function showEventDetailsOn(date, index) {
   return (dispatch, getState) => {
-    const details = getEventDetailsOn(date, getState)
+    const details = getEventDetailsOn(date, index, getState)
     dispatch(showEventDetailsAction(details))
     Navigation.showModal({
       screen: screenNames.EVENT_DETAILS,
@@ -27,10 +27,10 @@ export function showEventDetailsOn(date) {
   }  
 }
 
-function getEventDetailsOn(date, getState) {
+function getEventDetailsOn(date, index, getState) {
   const details = getState().app.eventsOnDays[date]
-  if(details && details.length > 0) {
-    return details[0]
+  if(details && details.length > index) {
+    return details[index]
   }
   return {currDate: date, description: 'No Event on the day'}
 }
@@ -60,10 +60,12 @@ export function getEventsOnDays(events) {
         if(!eventsOnDays[formattedCurrDate]) {
           eventsOnDays[formattedCurrDate] = []
         }
+        const index = eventsOnDays[formattedCurrDate].length
         eventsOnDays[formattedCurrDate].push({
           ...event,
           title: event.title || event.description,
-          date: formattedCurrDate
+          date: formattedCurrDate,
+          index: index
         })
       }
     });
