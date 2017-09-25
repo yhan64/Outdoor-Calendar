@@ -5,12 +5,15 @@ import {
   TouchableHighlight,
   StyleSheet
 } from 'react-native'
+import { Colors } from 'oc/js/constants/styles'
 
 export default function(props: TextEntryPropsType) {
   return (
     <TouchableHighlight
       style={styles.item} 
       onPress={props.onPress}
+      activeOpacity={0.8}
+      underlayColor={Colors.agendaDayNumber}
     >
       <Text>{props.bodyText}</Text>
     </TouchableHighlight>
