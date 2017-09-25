@@ -10,7 +10,7 @@ import {
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Navigation } from 'react-native-navigation'
-import { ModalNavStyle, Colors } from 'oc/js/constants/styles'
+import { ModalNavStyle, Colors } from 'oc/js/constants/sharedStyles'
 import { dismissModal } from 'oc/js/actions/appActions'
 const appActions = { dismissModal }
 import TextEntry from 'oc/js/components/TextEntry'
