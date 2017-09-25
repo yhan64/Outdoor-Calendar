@@ -1,5 +1,5 @@
-import * as actionTypes from 'oc/js/constants/actionTypes';
-import * as modalNames from 'oc/js//constants/modalNames';
+import * as actionTypes from 'oc/js/constants/action-types';
+import * as modalNames from 'oc/js//constants/modal-names';
 
 const initAppState = {
 	eventsOnDays: {},

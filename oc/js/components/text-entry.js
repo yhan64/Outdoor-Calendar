@@ -5,7 +5,7 @@ import {
   TouchableHighlight,
   StyleSheet
 } from 'react-native'
-import { Colors } from 'oc/js/constants/sharedStyles'
+import { Colors } from 'oc/js/constants/shared-styles'
 
 export default function(props: TextEntryPropsType) {
   return (

@@ -10,15 +10,15 @@ import {
 } from 'react-native'
 import { Agenda } from 'react-native-calendars'
 import moment from 'moment'
-import { fetchAllEvents } from 'oc/js/actions/apiActions'
+import { fetchAllEvents } from 'oc/js/actions/api-actions'
 const apiActions = {
   fetchAllEvents
 }
-import { showEventDetailsOn } from 'oc/js/actions/appActions'
+import { showEventDetailsOn } from 'oc/js/actions/app-actions'
 const appActions = {
   showEventDetailsOn
 }
-import TextEntry from 'oc/js/components/TextEntry'
+import TextEntry from 'oc/js/components/text-entry'
 
 class HomeScreen extends React.Component<Object, Object> {
   props: Object

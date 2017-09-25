@@ -1,5 +1,5 @@
 {
-  "name": "outdoor-calendar",
+  "name": "oc",
   "version": "0.0.0",
   "description": "Post, view outdoor activities...",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://yhan64@github.com/yhan64/Outdoor-Calendar.git"
+    "url": "git+https://yhan64@github.com/yhan64/oc.git"
   },
   "keywords": [
     "outdoor",
@@ -22,7 +22,7 @@
   "author": "yhan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yhan64/Outdoor-Calendar/issues"
+    "url": "https://github.com/yhan64/oc/issues"
   },
-  "homepage": "https://github.com/yhan64/Outdoor-Calendar#readme"
+  "homepage": "https://github.com/yhan64/oc#readme"
 }

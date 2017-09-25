@@ -1,4 +1,4 @@
-import screenDefinitions from './screenDefinitions'
+import screenDefinitions from './screen-definitions'
 import { Navigation } from 'react-native-navigation'
 
 export default function (store, Provider) {

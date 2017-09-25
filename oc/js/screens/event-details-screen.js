@@ -10,10 +10,10 @@ import {
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Navigation } from 'react-native-navigation'
-import { ModalNavStyle, Colors } from 'oc/js/constants/sharedStyles'
-import { dismissModal } from 'oc/js/actions/appActions'
+import { ModalNavStyle, Colors } from 'oc/js/constants/shared-styles'
+import { dismissModal } from 'oc/js/actions/app-actions'
 const appActions = { dismissModal }
-import TextEntry from 'oc/js/components/TextEntry'
+import TextEntry from 'oc/js/components/text-entry'
 
 class EventDetailsScreen extends React.Component {
   static navigatorStyle = ModalNavStyle

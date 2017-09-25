@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { Navigation } from 'react-native-navigation'
-import * as actionTypes from '../constants/actionTypes'
-import * as screenNames from 'oc/js/constants/screenNames'
+import * as actionTypes from '../constants/action-types'
+import * as screenNames from 'oc/js/constants/screen-names'
 
 export function dismissModal() {
   return (dispatch) => {

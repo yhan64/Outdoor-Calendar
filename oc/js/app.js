@@ -5,12 +5,12 @@ import { createLogger } from 'redux-logger'
 import { Provider } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 // reducers
-import api from 'oc/js/reducers/apiReducer';
-import app from 'oc/js/reducers/appReducer';
+import api from 'oc/js/reducers/api-reducer';
+import app from 'oc/js/reducers/app-reducer';
 
 // others
 import registry from './registry'
-import * as screenNames from 'oc/js/constants/screenNames'
+import * as screenNames from 'oc/js/constants/screen-names'
 
 const loggerMiddleware = createLogger()
 const reducers = combineReducers({api, app});
