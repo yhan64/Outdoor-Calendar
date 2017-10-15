@@ -3,9 +3,6 @@ import cheerio from './utils/cheerio'
 import db from './db';
 import URLParser from 'url-parse'
 
-
-// const url = "http://www.honghuworld.com/activity/show/316"
-
 const crawler_sources = {
   HHW: 'honghuworld'
 }
@@ -34,18 +31,29 @@ async function crawler() {
 
 //TODO: put this inside of a class including all needed resources as well
 async function crawlHHW(start_url) {
-  let eventsOverviewPageList = []
+  const eventsOverviewPageList = await getOverviewPageList(start_url)
   let eventsUrlList = []
-  let $ = cheerio.load(start_url)
-  eventsOverviewPageList.push(start_url)
-  //TODO: add other list page urls to listPageList
   for( let i = 0; i < eventsOverviewPageList.length; ++i) {
     await getEventsUrlListFromUrl(eventsOverviewPageList[i], eventsUrlList)
   }
-  console.log(eventsUrlList)
   for( let i = 0; i < eventsUrlList.length; ++i) {
     await saveEventFromURLToDB(eventsUrlList[i])
   }
+}
+
+async function getOverviewPageList(start_url) {
+  let overviewPageList = []
+  await request.get(start_url, async (err, res, body) => {
+    if(res.statusCode !== 200) {
+      return
+    }
+    const $ = cheerio.load(body)
+    const pagesList = $('ul', '#common_pager').children()
+    pagesList.each( function (i, element) {
+      overviewPageList.push($(element).children().attr('href'))
+    })
+  })
+  return overviewPageList
 }
 
 async function getEventsUrlListFromUrl(overviewPage, eventsUrlList) {
