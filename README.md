@@ -2,15 +2,15 @@
 
 ## !! Current working repo is oc3
 ## Tech Stack
-- Language: Javascript, (React Native)
-- Database: MySQL
+- Language: Javascript, (React Native, Node.js)
+- Database: PostgreSQL
 - Dev platform: Docker
 
 ## Milestones
 - v0.0.0 a brand new repo 
 - v0.5.0
-  - post outdoor activities manually through mobile app
   - view outdoor activities without any choices
+  - post outdoor activities manually through mobile app
   - edit outdoor activities
 - v0.7.0
   - view outdoor activities with choices
