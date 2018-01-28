@@ -1,5 +1,10 @@
 # Outdoor-Calendar
 
+## Screenshots
+### iOS
+![alt text](../assets/ios.gif)
+### Android
+![alt text](../assets/android.gif)
 ## Tech Stack
 - Language: Javascript, (React Native, Node.js)
 - Database: PostgreSQL
@@ -19,6 +24,9 @@ $ npm install
 2. Open Xcode/Android Studio.
 3. Select `oc-all/oc/ios` or `oc-all/oc/android` accordingly.
 4. Run the app locally on iOS simulator or Android emulator.
+### troble shooting
+- To run on Android you need to update the ip address pointing to you local machine: https://github.com/yhan64/oc-all/blob/master/oc/js/actions/api-actions.js#L5
+
 ## Planned Milestones
 - v0.0.0 a brand new repo 
 - v0.5.0 (working on this)
