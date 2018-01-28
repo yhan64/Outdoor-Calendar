@@ -7,15 +7,15 @@
 
 ## Milestones
 - v0.0.0 a brand new repo 
-- v0.5.0
+- v0.5.0 (working on this)
+  - grab outdoor activities from web
   - view outdoor activities without any choices
-  - post outdoor activities manually through mobile app
-  - edit outdoor activities
 - v0.7.0
   - view outdoor activities with choices
     - start location, destination, start date, duration, candidates requirements
 - v1.0.0
-  - grab outdoor activities from web
+  - post outdoor activities manually through mobile app
+  - edit outdoor activities
 - v1.5.0
   - in app queries (temporary conversations between team lead and people who are interested in, no need to jump out of the app to ask one or two questions)
 - in the future, maybe
