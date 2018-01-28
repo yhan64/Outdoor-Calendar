@@ -2,7 +2,7 @@ import { Platform } from 'react-native'
 import * as actionTypes from '../constants/action-types'
 import { getEventsOnDays } from './app-actions'
 
-const baseUrl = Platform.OS === 'ios' ? 'http://localhost:3030' : 'http://10.0.3.2:3030'
+const baseUrl = Platform.OS === 'ios' ? 'http://localhost:3030' : 'http://192.168.xxx.xxx:3030'  //fill in your local ip address to run on android
 
 const routes = {
   ALL_EVENTS: '/getEvents'
