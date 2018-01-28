@@ -2,9 +2,9 @@
 
 ## Screenshots
 ### iOS
-![alt text](../assets/ios.gif)
+![alt text](/assets/ios.gif)
 ### Android
-![alt text](../assets/android.gif)
+![alt text](/assets/android.gif)
 ## Tech Stack
 - Language: Javascript, (React Native, Node.js)
 - Database: PostgreSQL
