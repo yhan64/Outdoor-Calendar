@@ -5,7 +5,21 @@
 - Database: PostgreSQL
 - Dev platform: Docker
 
-## Milestones
+## How to run it locally
+1. Terminal: in root folder(oc-all)
+```
+$ docker-compose up
+$ npm install knex -g
+$ cd api
+$ knex migrate:latest
+$ npm run crawler
+$ cd ../oc
+$ npm install
+```
+2. Open Xcode/Android Studio.
+3. Select `oc-all/oc/ios` or `oc-all/oc/android` accordingly.
+4. Run the app locally on iOS simulator or Android emulator.
+## Planned Milestones
 - v0.0.0 a brand new repo 
 - v0.5.0 (working on this)
   - grab outdoor activities from web
