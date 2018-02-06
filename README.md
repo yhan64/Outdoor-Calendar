@@ -24,7 +24,7 @@ $ npm install
 2. Open Xcode/Android Studio.
 3. Select `oc-all/oc/ios` or `oc-all/oc/android` accordingly.
 4. Run the app locally on iOS simulator or Android emulator.
-### troble shooting
+### trouble shooting
 - To run on Android you need to update the ip address pointing to you local machine: https://github.com/yhan64/oc-all/blob/master/oc/js/actions/api-actions.js#L5
 
 ## Planned Milestones
