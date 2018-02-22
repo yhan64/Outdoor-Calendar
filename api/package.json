@@ -8,7 +8,7 @@
     "crawler": "export NODE_ENV=development; nodemon src/crawler.js --exec babel-node",
     "build": "babel --presets es2015 src -d dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install-start": "npm install & npm run build && node dist/server.js"
+    "start": "npm run build && node dist/server.js"
   },
   "author": "",
   "license": "ISC",

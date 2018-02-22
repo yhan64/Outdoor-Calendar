@@ -1,10 +1,9 @@
 version: "3"
 services:
   api:
-    image: node:8
-    command: npm run install-start
-    volumes:
-      - ./api:/api/
+    build:
+      context: ./api
+    command: npm run start
     working_dir: /api/
     links:
       - db-postgres
