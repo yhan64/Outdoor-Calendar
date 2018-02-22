@@ -13,6 +13,7 @@ services:
     environment:
       POSTGRES_HOST: db-postgres
       API_PORT: 3030
+      NODE_ENV: development
   db-postgres:
     image: postgres:9.6
     ports:
