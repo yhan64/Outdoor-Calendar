@@ -2,7 +2,7 @@ version: "3"
 services:
   api:
     image: node:8
-    command: npm run dev
+    command: npm run install-start
     volumes:
       - ./api:/api/
     working_dir: /api/
