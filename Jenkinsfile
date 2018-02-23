@@ -21,5 +21,10 @@ pipeline {
                 sh 'docker-compose up -d'
             }
         }
+        stage('Test') {
+          steps {
+            echo 'I\'m a test'
+          }
+        }
     }
 }
